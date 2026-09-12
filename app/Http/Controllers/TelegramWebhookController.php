@@ -2,16 +2,20 @@
 namespace App\Http\Controllers;
 
 use App\Jobs\AnalyzeTradeJob;
-use App\Models\trades;
-use Gemini\Data\Blob;
-use Gemini\Enums\MimeType;
+use App\Models\Trades;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
+/* 
+pasang ini di browser untuk setting telegram bot agar terhubung di web
+https://api.telegram.org/bot<TOKEN_BOT_KAMU>/setWebhook?url=https://riza.freehosting.dev/api/telegram/webhook
+
+ini untuk mereset antrian telegram agar menjadi 0
+https://api.telegram.org/bot<TOKEN_BOT_KAMU>/setWebhook?url=https://riza.freehosting.dev/api/telegram/webhook&drop_pending_updates=true
+*/
 class TelegramWebhookController extends Controller
 {
     public function handle(Request $request)
@@ -48,7 +52,7 @@ class TelegramWebhookController extends Controller
                 // 2. Logika Penanganan Album (Multiple Photos) vs Single Photo
                 if ($mediaGroupId) {
                 DB::transaction(function () use ($mediaGroupId, $fileName, $caption) {
-                    $trade = trades::where('media_group_id', $mediaGroupId)->lockForUpdate()->first();
+                    $trade = Trades::where('media_group_id', $mediaGroupId)->lockForUpdate()->first();
 
                     if ($trade) {
                         $images = $trade->chart_images ?? [];
@@ -60,7 +64,7 @@ class TelegramWebhookController extends Controller
                             'note_transcript' => $trade->notes ?: $caption,
                         ]);
                     } else {
-                        $trade = trades::create([
+                        $trade = Trades::create([
                             'media_group_id' => $mediaGroupId,
                             'chart_images'   => [$fileName],
                             'note_transcript' => $caption,
@@ -71,7 +75,7 @@ class TelegramWebhookController extends Controller
                     AnalyzeTradeJob::dispatchSync($trade);
                 });
             } else {
-                $trade = trades::create([
+                $trade = Trades::create([
                     'chart_images' => [$fileName],
                     'note_transcript' => $caption,
                 ]);

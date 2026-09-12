@@ -2,7 +2,7 @@
 
 namespace App\Jobs;
 
-use App\Models\trades;
+use App\Models\Trades;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Support\Facades\Http;
@@ -12,12 +12,12 @@ class AnalyzeTradeJob implements ShouldQueue
 {
     use Queueable;
 
-    public trades $trade;
+    public Trades $trade;
 
     /**
      * Create a new job instance.
      */
-    public function __construct(trades $trade)
+    public function __construct(Trades $trade)
     {
         $this->trade = $trade;
     }
