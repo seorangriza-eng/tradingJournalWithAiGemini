@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Trades\Tables;
 
+use App\Filament\Actions\AnalyzeTrade;
 use Filament\Actions\Action;
 use Filament\Actions\ActionGroup;
 use Filament\Actions\BulkActionGroup;
@@ -88,7 +89,7 @@ class TradesTable
             )
             ->recordActions([
                 ActionGroup::make([
-
+                    AnalyzeTrade::make(),
                     ViewAction::make(),
                     EditAction::make(),
                     DeleteAction::make()
