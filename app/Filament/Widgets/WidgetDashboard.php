@@ -2,7 +2,7 @@
 
 namespace App\Filament\Widgets;
 
-use App\Models\trades;
+use App\Models\Trades;
 use Filament\Widgets\StatsOverviewWidget;
 use Filament\Widgets\StatsOverviewWidget\Stat;
 use Override;
@@ -15,12 +15,13 @@ class WidgetDashboard extends StatsOverviewWidget
     
     protected function getStats(): array
     {
-        $totalTrades = trades::count('created_at') ?? 0;
-        $totalWin = trades::where('result', 'win')
+        $totalTrades = Trades::count('created_at') ?? 0;
+        $totalWin = Trades::where('result', 'win')
             ->count('created_at') ?? 0;
-        $totalLose = trades::where('result', 'lose')
+        $totalLose = Trades::where('result', 'lose')
             ->count('created_at') ?? 0;
-        $winRate = (($totalWin / $totalTrades) * 100) ?? 0; 
+        $rawWinRate = $totalTrades > 0 ? (($totalWin / $totalTrades) * 100) : 0;
+        $winRate = number_format($rawWinRate, 2);
 
         return [
             Stat::make('Win Rate', $winRate . ' %')
