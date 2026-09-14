@@ -52,7 +52,8 @@ class AiReflection extends Action
                             'rule_violations' => $t->rule_violations ?? null,
                             'am_method_aligned' => $t->am_method_aligned ?? null,
                             'discipline_score' => $t->discipline_score ?? null,
-                            'notes' => $t->notes,
+							'result' => $t->result ?? null,
+                            'notes' => $t->note_transcript ?? null,
                             'ai_analysis_item' => $t->ai_analysis,
                         ];
                     })->toArray();
