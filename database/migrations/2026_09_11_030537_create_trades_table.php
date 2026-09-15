@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('result')->nullable();
             $table->string('media_group_id')->nullable()->index();
             $table->json('chart_images')->nullable(); // Array path gambar
+            $table->text('result_image')->nullable();
             $table->text('note_transcript')->nullable();
             $table->boolean('am_method_aligned')->nullable();
             $table->integer('discipline_score')->nullable();

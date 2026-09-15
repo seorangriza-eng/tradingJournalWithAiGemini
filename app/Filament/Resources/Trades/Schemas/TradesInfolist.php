@@ -52,6 +52,12 @@ class TradesInfolist
                     ->placeholder('-')
                     ->imageGallery()
                     ->columnSpanFull(),
+                ImageEntry::make('result_image')
+                    ->state(fn ($record) => $record->result_image)
+                    ->disk('public')
+                    ->placeholder('-')
+                    ->imageGallery()
+                    ->columnSpanFull(),
                 TextEntry::make('note_transcript')
                     ->placeholder('-')
                     ->columnSpanFull(),
