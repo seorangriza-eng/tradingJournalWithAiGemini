@@ -3,6 +3,7 @@
 namespace App\Providers\Filament;
 
 use App\Filament\Resources\Trades\TradesResource;
+use App\Filament\Widgets\EconomicCalendar;
 use App\Filament\Widgets\WidgetDashboard;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
@@ -63,7 +64,8 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\Filament\Widgets')
             ->widgets([
-                WidgetDashboard::class
+                WidgetDashboard::class,
+                EconomicCalendar::class
             ])
             ->middleware([
                 EncryptCookies::class,
