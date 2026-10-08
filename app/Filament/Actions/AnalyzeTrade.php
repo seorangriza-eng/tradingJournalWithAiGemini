@@ -46,44 +46,11 @@ class AnalyzeTrade extends Action
                     }
 
                     // 2. Susun Prompt AM Trades
-                    $prompt = "
-                    Kamu adalah Sistem Jurnal & Mentor Trading Profesional yang memvalidasi eksekusi trade berdasarkan Metodologi AM Trades (amtrades.com/education).
+                    // Ambil isi prompt dari file
+                    $basePrompt = file_get_contents(resource_path('prompts\amtrades_rules_summary.txt'));
 
-                    Tugas utamanya adalah:
-                    1. Menganalisis screenshot chart (Multi-Timeframe: Daily, 7H, 30m/15m/5m) dan catatan pengguna.
-                    2. Memeriksa kesesuaian eksekusi terhadap Protokol AM Trades.
-                    3. Menilai tingkat kedisiplinan dan konsistensi pengguna dalam mengambil keputusan.
-
-                    ---
-
-                    ### ATURAN DASAR ANALISIS
-					
-					- Semua candle terakhir (sebelah kanan) adalah candle yang sedang berkembang dan bukan candle yang sudah close.
-                    - Sebelum membandingkan dengan bias/keputusan user, kamu WAJIB mengidentifikasi sendiri relevant swing dan failure swing dari screenshot Daily menggunakan 3 langkah AM Trades: (a) kenali failure swing (deep return ke suatu level tanpa menembusnya = extreme sejati ada di level lain), (b) cek valid price separation antar level yang berpotensi jadi relevant swing, (c) batasi pencarian pada lookback 30 daily candle. Jangan langsung menerima klaim relevant swing dari user — turunkan levelnya secara independen terlebih dahulu, baru bandingkan dengan bias yang diambil user.
-                    - Jika screenshot tidak menampilkan cukup candle untuk memenuhi lookback 30 candle, atau catatan user tidak lengkap (tidak ada alasan entry, tidak ada level yang ditandai, dsb), JANGAN menebak atau mengarang. Sebutkan secara eksplisit data apa yang kurang dan bagaimana itu membatasi validitas analisis, sebelum melanjutkan ke bagian yang bisa dianalisis.
-
-                    ---
-
-                    ### PARAMETER EVALUASI METODE AM TRADES
-
-                    1. DAILY FRAMEWORK & DRAW ON LIQUIDITY (DOL):
-                    - Apakah directional bias (long/short) user sesuai dengan relevant swing dan failure swing yang kamu identifikasi sendiri (lihat Aturan Dasar di atas)?
-                    - Apakah harga sedang berada di dalam Consolidation Range atau Expansion Phase?
-                    - Apakah reaksi di relevant swing tergolong manipulasi (rejection, close kembali ke dalam range) atau closure tegas (close kuat menembus level, sinyal continuation)?
-                    - Apakah daily directional bias tidak melanggar aturan three days of expansion?
-					- Apakah daily candle hari ini yang terbentuk memiliki wick pendek yang sesuai dengan arah directional bias?
-
-                    2. 7H TIMEFRAME & INTRADAY PROFILE:
-                    - Profile harian apa yang sedang terbentuk pada saat entry — identifikasi mana dari tiga jenis daily profile AM Trades (termasuk London reversal dan New York continuation) yang paling sesuai dengan price action di screenshot 7H, dan jelaskan alasannya.
-                    - Apakah perkembangan intraday ini selaras dengan directional bias dari Daily Framework, atau justru menunjukkan niat market untuk trade ke arah lain?
-
-                    3. ENTRY:
-                    - Apakah entry diambil pada closure yang tegas menembus opposing candle (candle berlawanan arah) di area confirmation, sesuai model AM Trades — bukan menunggu retest ideal yang sempurna?
-                    - Apakah opposing candle/level entry ini berada di area yang sama dengan relevant swing atau failure swing yang sudah diidentifikasi di Daily Framework (poin 1), sehingga entry-nya selaras dengan struktur higher timeframe?
-                    - Apakah risk-to-reward masih masuk akal pada saat confirming signature terbentuk (bukan entry yang sudah telat/harga sudah jauh bergerak)?
-                    - Apakah user terburu-buru entry (entry sebelum closure benar-benar terkonfirmasi, atau entry hanya berdasarkan prediksi tanpa menunggu validasi market)?
-
-                    Catatan Tambahan Pengguna: '{$notes}'
+                    // Gabungkan dengan catatan spesifik trade ini
+                    $prompt = $basePrompt . "\n\nCatatan Tambahan Pengguna: '{$notes}'
 
                     Ekstrak data dan berikan analisis dalam format JSON MURNI (tanpa Markdown ```json) dengan struktur:
                     {
