@@ -2,7 +2,9 @@
 
 namespace App\Filament\Widgets;
 
+use App\Filament\Resources\Trades\TradesResource;
 use App\Models\Trades;
+use Override;
 use Saade\FilamentFullCalendar\Widgets\FullCalendarWidget;
 
 class TradeCalendarWidget extends FullCalendarWidget
@@ -20,16 +22,15 @@ class TradeCalendarWidget extends FullCalendarWidget
                 $color = '#3b82f6'; // Default Biru
                 if ($trade->result !== null) {
                     if($trade->result === "Win"){
-                        $color = '#22c55e';
+                        $color = '#179d48';
                     } else if($trade->result === "Lose"){
-                        $color = '#ef4444';
+                        $color = '#a22121';
                     } else {
                         $color = '#646464';
                     }
                 }
 
-                // Format teks judul di kalender: "XAUUSD | Score: 8/10"
-                $title = "{$trade->pair} ";
+                $title = "{$trade->pair} - {$trade->discipline_score} ";
 
                 return [
                     'id'    => $trade->id,
@@ -39,21 +40,21 @@ class TradeCalendarWidget extends FullCalendarWidget
                     'backgroundColor' => $color,
                     'borderColor'     => $color,
                     'textColor'       => '#ffffff',
+                    'url'             => TradesResource::getUrl('view', ['record' => $trade->id]),
                 ];
             })
             ->toArray();
     }
 
-    /**
-     * Opsi klik event untuk melihat detail/pindah ke halaman view trade
-     */
+    #[Override]
     protected function headerActions(): array
     {
         return [
-            // Tambahkan tombol action global jika diperlukan
+            //
         ];
     }
 
+    
     /**
      * Konfigurasi tampilan FullCalendar
      */
