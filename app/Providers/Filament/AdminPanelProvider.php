@@ -5,6 +5,7 @@ namespace App\Providers\Filament;
 use App\Filament\Resources\Trades\TradesResource;
 use App\Filament\Widgets\EconomicCalendar;
 use App\Filament\Widgets\RizaTradeRules;
+use App\Filament\Widgets\TradeCalendarWidget;
 use App\Filament\Widgets\WidgetDashboard;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
@@ -23,6 +24,7 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Saade\FilamentFullCalendar\FilamentFullCalendarPlugin;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -58,6 +60,7 @@ class AdminPanelProvider extends PanelProvider
             ->pages([
                 Dashboard::class,
             ])
+            ->plugin(FilamentFullCalendarPlugin::make())
             ->navigationItems([
                 NavigationItem::make('Trade Baru')
                     ->url(fn (): string => TradesResource::getUrl('create'))
@@ -67,7 +70,8 @@ class AdminPanelProvider extends PanelProvider
             ->widgets([
                 WidgetDashboard::class,
                 RizaTradeRules::class,
-                EconomicCalendar::class
+                EconomicCalendar::class,
+                TradeCalendarWidget::class,
             ])
             ->middleware([
                 EncryptCookies::class,
