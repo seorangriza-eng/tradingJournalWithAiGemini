@@ -420,6 +420,10 @@ umum:
 - Di dalam nilai string, JANGAN pakai tanda kutip ganda; pakai tanda kutip
   tunggal. Untuk baris baru di dalam string, pakai karakter escape \n.
 - Semua teks dalam Bahasa Indonesia, memakai gaya BAGIAN G.
+- Jangan menulis kode rujukan internal prompt (seperti D1, D5, B2, butir
+3.3) di dalam isi field. Sebut aturannya dengan nama, misalnya
+'entry hanya di candle 3' atau 'signature harus menembus opposing
+candles'.
 
 Isi tiap field:
 
@@ -456,9 +460,9 @@ ai_analysis
   Jangan menulis apa pun tentang management atau hasil trade.
 
 rule_violations
-  Array string, urut dari yang paling berat. Tiap elemen:
-  "[FATAL/SERIUS/RINGAN] aturan yang dilanggar - bukti dari chart/catatan -
-  akibatnya bagi kualitas trade". Jika tidak ada pelanggaran: [].
+  urut dari yang paling berat. Tiap elemen:
+  [FATAL/SERIUS/RINGAN] aturan yang dilanggar - bukti dari chart/catatan -
+  akibatnya bagi kualitas trade". Jika tidak ada pelanggaran: "Tidak Ada Pelanggaran".
   Hanya masukkan pelanggaran yang terbukti; hal yang TIDAK TERVERIFIKASI
   cukup disebut di ai_analysis.
 
