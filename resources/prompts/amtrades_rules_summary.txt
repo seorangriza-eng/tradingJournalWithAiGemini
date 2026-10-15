@@ -35,22 +35,22 @@ C. Protokol Range (Range Protocol)
 Tujuan: Memvalidasi apakah ekspansi Daily Candle benar-benar terkonfirmasi untuk sesi New York. 
 A. Logika Sesi & Chart Timeframe 7 Jam (7h Profile)
 Satu Candle Daily dibagi menjadi 3 sesi utama (masing-masing 7 jam): 
-1.	Sesi Asia (18:00 – 01:00 EST): Kontribusi ~17% dari Daily Range. 
-2.	Sesi London (01:00 – 08:00 EST): Kontribusi ~23% dari Daily Range. 
-3.	Sesi New York (08:00 – Close EST / Lilin 08:00): Kontribusi ~60% dari Daily Range dan memiliki probabilitas 86% ditutup searah dengan Daily Candle. Memegang porsi utama untuk fokus eksekusi. 
+1.	Sesi Asia (05:00 AM – 11:00 AM): Kontribusi ~17% dari Daily Range. 
+2.	Sesi London (11:00 AM – 18:00 PM): Kontribusi ~23% dari Daily Range. 
+3.	Sesi New York (18:00 PM – 05:00 AM): Kontribusi ~60% dari Daily Range dan memiliki probabilitas 86% ditutup searah dengan Daily Candle. Memegang porsi utama untuk fokus eksekusi. 
 B. Tiga Jenis Daily Profiles
 1.	18:00 Reversal Profile:
-o	Sesi Asia (18:00) membentuk high/low intraday. 
-o	Sesi London (01:00) melakukan manipulasi/pembalikan dan bergerak menjauh. 
-o	Sesi New York (08:00) langsung melanjutkan ekspansi (continuation). 
+o	Sesi Asia (05:00 AM) membentuk high/low intraday. 
+o	Sesi London (11:00 AM) melakukan manipulasi/pembalikan dan bergerak menjauh. 
+o	Sesi New York (18:00 PM) langsung melanjutkan ekspansi (continuation). 
 o	Catatan: Tidak memerlukan retracement mendalam di New York karena pergerakan ekspansi sudah berjalan. 
 2.	01:00 Reversal Profile:
-o	Sesi Asia (18:00) konsolidasi atau bergerak dangkal berlawanan arah. 
-o	Sesi London (01:00) bergerak ke range Asia, membentuk penolakan (reversal), serta menetapkan high/low harian secara jelas. 
-o	Sesi New York (08:00) melanjutkan arah dari penolakan London. 
+o	Sesi Asia (05:00 AM) konsolidasi atau bergerak dangkal berlawanan arah. 
+o	Sesi London (11:00 AM) bergerak ke range Asia, membentuk penolakan (reversal), serta menetapkan high/low harian secara jelas. 
+o	Sesi New York (18:00 PM) melanjutkan arah dari penolakan London. 
 3.	08:00 Reversal Profile:
-o	Sesi Asia (18:00) & London (01:00) sama-sama konsolidasi atau melanjutkan pergerakan berlawanan. 
-o	Sesi New York (08:00) wajib menyapu high/low intraday terlebih dahulu, mengonfirmasi reversal, baru kemudian melakukan ekspansi. 
+o	Sesi Asia (05:00 AM) & London (11:00 AM) sama-sama konsolidasi atau melanjutkan pergerakan berlawanan. 
+o	Sesi New York (18:00 PM) wajib menyapu high/low intraday terlebih dahulu, mengonfirmasi reversal, baru kemudian melakukan ekspansi. 
 C. Invalidation Profile (Hari yang Tidak Boleh Ditradingkan)
 Jika gabungan Sesi Asia dan London sudah menghabiskan seluruh jangkauan pergerakan harian yang diharapkan (full expected daily range), maka Sesi New York dipastikan kehilangan ruang ekspansi. Hari tersebut dianggap invalid dan wajib diabaikan/dihindari. 
 3. Tahap 3: Entry (Continuation Signatures & Divergence)
