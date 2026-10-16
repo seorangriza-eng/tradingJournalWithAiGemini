@@ -82,12 +82,15 @@ class TradesInfolist
                 TextEntry::make('rule_violations')
                     ->placeholder('-')
                     ->color('warning')
+                    ->extraAttributes(['style' => 'white-space: pre-line;'])
                     ->columnSpanFull(),
                 TextEntry::make('consistency_eval')
                     ->placeholder('-')
+                    ->extraAttributes(['style' => 'white-space: pre-line;'])
                     ->columnSpanFull(),
                 TextEntry::make('ai_analysis')
                     ->placeholder('-')
+                    ->extraAttributes(['style' => 'white-space: pre-line;'])
                     ->columnSpanFull(),
             ])
             ->columns([

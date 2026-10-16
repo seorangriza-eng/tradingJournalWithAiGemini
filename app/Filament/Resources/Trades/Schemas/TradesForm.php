@@ -45,6 +45,10 @@ class TradesForm
                     ->columnSpanFull()
                     ->hiddenOn('create'),
                 Textarea::make('note_transcript')
+                    ->default('Daily: manipulation high / low di tanggal, bias long/short, target di relevant high / low di 
+7H: asia , london ,
+Entry: (jelaskan.. stop dimana?)')
+                    ->rows(10)
                     ->columnSpanFull(),
                 Select::make('am_method_aligned')
                     ->options([

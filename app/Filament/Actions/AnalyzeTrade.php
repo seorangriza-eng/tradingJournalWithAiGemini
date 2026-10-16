@@ -47,23 +47,24 @@ class AnalyzeTrade extends Action
 
                     // 2. Susun Prompt AM Trades
                     // Ambil isi prompt dari file
-                    $basePrompt = file_get_contents(resource_path('prompts/amtrades_rules_summary_claude.txt'));
+                    $basePrompt = file_get_contents(resource_path('prompts\amtrades_rules_summary.txt'));
 
                     // Gabungkan dengan catatan spesifik trade ini
-                    $prompt = $basePrompt . "\n\nCATATAN PENGGUNA (apa yang dilihat di daily, 7h, dan alasan entry): '{$notes}'
+                    $prompt = $basePrompt . "\n\nCatatan Tambahan Pengguna: '{$notes}'
 
-                    Gambar terlampir berurutan: 1) Daily, 2) 7h, 3) Entry. Gambar tambahan jika ada adalah timeframe entry tambahan.
-
-                    Berikan audit dalam JSON MURNI (tanpa Markdown) dengan struktur:
+                    Ekstrak data dan berikan analisis dalam format JSON MURNI (tanpa Markdown ```json) dengan struktur:
                     {
-                    \"pair\": \"simbol dari chart, contoh XAUUSD\",
+                    \"pair\": \"Nama Pair/Aset (contoh: XAUUSD, GBPUSD)\",
                     \"position\": \"LONG atau SHORT\",
                     \"am_method_aligned\": true_atau_false,
-                    \"discipline_score\": 1_sampai_10,
-                    \"ai_analysis\": \"VONIS, BIAS DAILY, PROFILE 7H, ENTRY, YANG SUDAH BENAR, KRITIK DAN PERINTAH, PERTANYAAN (sesuai BAGIAN F)\",
-                    \"rule_violations\": [\"[FATAL/SERIUS/RINGAN] aturan - bukti - akibat. Kosongkan [] jika tidak ada.\"],
-                    \"consistency_eval\": \"2-3 kalimat tajam tentang disiplin dan pola pikir, ditutup satu perintah\"
-                    }";
+                    \"discipline_score\": 1_sampai_10 ,
+                    \"ai_analysis\": \"Penjelasan mengenai kejelasan setup multi-timeframe (Daily -> 7H -> Entry M30/M15/M5). Sebutkan apakah Daily Bias, 7H profile, dan Entry CSD tervalidasi dengan baik.\",
+                    \"rule_violations\": [
+                        \"Daftar pelanggaran aturan AM Trades jika ada (misal: 'Arah Entry tidak sesuai dengan Daily Bias', 'Entry tidak sesuai dengan profile 7H', 'Tidak ada konfirmasi CSD'). Jika tidak ada pelanggaran, isi array kosong [].\"
+                    ],
+                    \"consistency_eval\": \"Catatan ringkas 1-2 kalimat untuk melatih mentalitas dan konsistensi trader berdasarkan keputusan ini.\"
+                    }
+                    ";
 
                     $contentsParts = [
                         ['text' => $prompt]
