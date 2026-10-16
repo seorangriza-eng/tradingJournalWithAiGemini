@@ -52,8 +52,8 @@ class AnalyzeTrade extends Action
                     // Gabungkan dengan catatan spesifik trade ini
                     $prompt = $basePrompt . "\n\nCATATAN PENGGUNA (apa yang dilihat di daily, 7h, dan alasan entry): '{$notes}'
 
-                    Gambar terlampir berurutan: 1) Daily, 2) 7h, 3) Entry. Gambar tambahan jika ada adalah timeframe entry tambahan.
-
+                    Gambar terlampir tidak berurutan: Daily, 7h, Entry. Gambar tambahan jika ada adalah timeframe entry tambahan.
+                    
                     Berikan audit dalam JSON MURNI (tanpa Markdown) dengan struktur:
                     {
                     \"pair\": \"simbol dari chart, contoh XAUUSD\",

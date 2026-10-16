@@ -85,6 +85,8 @@ class AdminPanelProvider extends PanelProvider
             ->authMiddleware([
                 Authenticate::class,
             ])
+            ->resourceEditPageRedirect('view')
+			->breadcrumbs(false)
             ->sidebarCollapsibleOnDesktop();
     }
 }
