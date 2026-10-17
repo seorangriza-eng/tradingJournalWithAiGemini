@@ -22,6 +22,8 @@ class WeeklyReflectionResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::Film;
 
+    protected static ?int $navigationSort = 3;
+
     protected static ?string $recordTitleAttribute = 'periode';
 
     public static function form(Schema $schema): Schema
