@@ -38,6 +38,7 @@ class AdminPanelProvider extends PanelProvider
             ->colors([
                 'primary' => Color::Green,
             ])
+            ->sidebarWidth('15rem')
             ->favicon(asset('images/favicon.png'))
             ->renderHook(
                 PanelsRenderHook::TOPBAR_START, // Posisi di bagian atas paling kiri
