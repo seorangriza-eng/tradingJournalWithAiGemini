@@ -10,6 +10,6 @@ class MetalProfile extends Page
 {
     protected string $view = 'filament.pages.metal-profile';
     protected static ?int $navigationSort = 1;
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::ArrowPathRoundedSquare;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::CubeTransparent;
 
 }
