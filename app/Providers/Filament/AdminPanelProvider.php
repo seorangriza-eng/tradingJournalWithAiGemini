@@ -4,6 +4,7 @@ namespace App\Providers\Filament;
 
 use App\Filament\Resources\Trades\TradesResource;
 use App\Filament\Widgets\EconomicCalendar;
+use App\Filament\Widgets\MistakeWidget;
 use App\Filament\Widgets\RizaTradeRules;
 use App\Filament\Widgets\WidgetDashboard;
 use Filament\Http\Middleware\Authenticate;
@@ -68,6 +69,7 @@ class AdminPanelProvider extends PanelProvider
             ])
             // ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\Filament\Widgets')
             ->widgets([
+                MistakeWidget::class,
                 WidgetDashboard::class,
                 RizaTradeRules::class,
                 EconomicCalendar::class,

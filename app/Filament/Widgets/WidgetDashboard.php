@@ -55,5 +55,4 @@ class WidgetDashboard extends StatsOverviewWidget
             'default' => 2,
         ]);
     }
-
 }
